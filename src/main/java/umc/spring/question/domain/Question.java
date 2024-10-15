@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import umc.spring.global.BaseEntity;
+import umc.spring.user.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +26,8 @@ public class Question extends BaseEntity {
     private String content;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="question_id")
-    private Question question;
+    @JoinColumn(name="user_id")
+    private User user;
 
     @OneToMany(mappedBy="question", cascade=CascadeType.ALL, orphanRemoval = true)
     private List<QuestionImage> images=new ArrayList<QuestionImage>();
