@@ -16,4 +16,15 @@ public class QuestionImage extends BaseEntity {
     private Long id;
 
     private String imageUrl;
+
+    @ManyToOne
+    @JoinColumn(name="question_id")
+    private Question question;
+
+
+    //연관관계 편의 메소드
+    public void mapQuestion(Question question) {
+        this.question = question;
+        question.getImages().add(this);
+    }
 }

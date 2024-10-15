@@ -1,4 +1,4 @@
-package umc.spring.member.domain.enums;
+package umc.spring.user.domain.enums;
 
 public enum Gender {
     MALE, FEMALE

@@ -5,6 +5,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import umc.spring.global.BaseEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -20,4 +23,12 @@ public class Question extends BaseEntity {
     private String title;
     @NotNull
     private String content;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="question_id")
+    private Question question;
+
+    @OneToMany(mappedBy="question", cascade=CascadeType.ALL, orphanRemoval = true)
+    private List<QuestionImage> images=new ArrayList<QuestionImage>();
+
 }

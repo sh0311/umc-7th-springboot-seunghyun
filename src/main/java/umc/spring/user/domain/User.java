@@ -1,4 +1,4 @@
-package umc.spring.member.domain;
+package umc.spring.user.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,18 +7,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import jakarta.validation.constraints.NotNull;
 import umc.spring.global.BaseEntity;
-import umc.spring.member.domain.enums.Gender;
-import umc.spring.member.domain.enums.MemberStatus;
+import umc.spring.user.domain.enums.Gender;
+import umc.spring.user.domain.enums.UserStatus;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
 @Getter
 @Builder
 @AllArgsConstructor
-public class Member extends BaseEntity {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
@@ -36,7 +35,7 @@ public class Member extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
-    private MemberStatus status;
+    private UserStatus status;
 
     private Integer score;
     private LocalDate inActiveDate;
