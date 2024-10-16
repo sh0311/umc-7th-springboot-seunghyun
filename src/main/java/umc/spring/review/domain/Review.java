@@ -32,4 +32,16 @@ public class Review extends BaseEntity {
 
     @OneToMany(mappedBy="review", cascade=CascadeType.ALL, orphanRemoval = true)
     private List<ReviewImage> images=new ArrayList<>();
+
+
+    //연관관계 편의 메소드
+    public void addImage(ReviewImage image) {
+        images.add(image);
+        image.setReview(this);
+    }
+
+    public void removeImage(ReviewImage image) {
+        images.remove(image);
+        image.removeReview();
+    }
 }

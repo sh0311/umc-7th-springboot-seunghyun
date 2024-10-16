@@ -32,4 +32,19 @@ public class Question extends BaseEntity {
     @OneToMany(mappedBy="question", cascade=CascadeType.ALL, orphanRemoval = true)
     private List<QuestionImage> images=new ArrayList<QuestionImage>();
 
+
+
+    //연관관계 편의 메소드 (이미지는 하나의 문의사항에 대해서도 여러 이미지 엔티티의 추가와 삭제가 빈번하게 일어나서 add, remove 두개로 나누어 연관관계를 관리하는 게 좋다)
+
+    public void addImage(QuestionImage image) {
+        images.add(image);
+        if(image.getQuestion()!=this)
+            image.setQuestion(this);
+    }
+
+    public void removeImage(QuestionImage image) {
+        images.remove(image);
+        image.removeQuestion();
+    }
+
 }

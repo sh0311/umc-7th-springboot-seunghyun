@@ -24,8 +24,11 @@ public class ReviewImage extends BaseEntity {
 
 
     //연관관계 편의 메소드
-    public void mapReview(Review review) {
-        this.review=review;
-        review.getImages().add(this);
+    void setReview(Review review) {
+        this.review = review;
+    }
+
+    public void removeReview(){
+        this.review = null;
     }
 }

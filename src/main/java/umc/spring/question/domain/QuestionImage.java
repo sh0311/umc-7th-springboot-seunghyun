@@ -22,9 +22,11 @@ public class QuestionImage extends BaseEntity {
     private Question question;
 
 
-    //연관관계 편의 메소드
-    public void mapQuestion(Question question) {
+    void setQuestion(Question question) {
         this.question = question;
-        question.getImages().add(this);
+    }
+
+    public void removeQuestion(){
+        this.question = null;
     }
 }
