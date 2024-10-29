@@ -16,11 +16,23 @@ public class Restaurant extends BaseEntity {
     @Column(name="restaurant_id")
     private Long id;
 
+    private String name;
     private String location;
     //별점
-    private float totalScore;
-    private String name;
+    private Float totalScore;
+
 
     @Enumerated(EnumType.STRING)
     private FoodCategory foodCategory;
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", totalScore=" + totalScore +
+                ", foodCategory=" + foodCategory +// region의 이름 출력
+                '}';
+    }
 }
