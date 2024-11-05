@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class RestaurantRepositoryImpl implements RestaurantRepositoryCustom {
-    private final JPAQueryFactory queryFactory;
     private final QRestaurant restaurant=QRestaurant.restaurant;
     private final JPAQueryFactory jpaQueryFactory;
 

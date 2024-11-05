@@ -33,6 +33,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
 	// @NotNull 같은 제약조건을 달아줄 수 있는 Bean Validation 사용 위해 설치
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
