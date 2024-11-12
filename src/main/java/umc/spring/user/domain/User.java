@@ -7,8 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import jakarta.validation.constraints.NotNull;
 import umc.spring.global.BaseEntity;
-import umc.spring.user.domain.enums.Gender;
-import umc.spring.user.domain.enums.UserStatus;
+import umc.spring.user.enums.Gender;
+import umc.spring.user.enums.UserStatus;
 
 import java.time.LocalDate;
 
@@ -35,9 +35,11 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
-    private UserStatus status;
+    @Builder.Default
+    private UserStatus status=UserStatus.ACTIVE;
 
-    private Integer score;
+    @Builder.Default
+    private Integer score=0;
     private LocalDate inActiveDate;
 
     @NotNull
