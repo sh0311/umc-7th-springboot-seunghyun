@@ -1,4 +1,4 @@
-package umc.spring.mapping;
+package umc.spring.mapping.domain;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -8,7 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import umc.spring.mapping.domain.UserPrefer;
 
 
 /**
@@ -17,7 +16,7 @@ import umc.spring.mapping.domain.UserPrefer;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QUserPrefer extends EntityPathBase<UserPrefer> {
 
-    private static final long serialVersionUID = 1615227161L;
+    private static final long serialVersionUID = 1358774343L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 

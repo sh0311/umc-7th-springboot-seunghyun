@@ -3,6 +3,7 @@ package umc.spring.user.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import umc.spring.apiPayload.code.status.ErrorStatus;
 import umc.spring.apiPayload.exception.handler.NotFoundHandler;
 import umc.spring.category.domain.Category;
 import umc.spring.category.repository.CategoryRepository;
@@ -31,7 +32,7 @@ public class UserService {
 
         //foodCategoryList 생성
         List<Category> foodCategoryList=request.getPreferCategory().stream()
-                .map(category->{return categoryRepository.findById(category).orElseThrow(()->new NotFoundHandler(ErrorStatus.FOOD_CATEGORY_NOTFOUND));
+                .map(category->{return categoryRepository.findById(category).orElseThrow(()->new NotFoundHandler(ErrorStatus.FOOD_CATEGORY_NOT_FOUND));
                 }).toList();
 
         //request로 받은 foodCategoryList로 userPreferList 작성
