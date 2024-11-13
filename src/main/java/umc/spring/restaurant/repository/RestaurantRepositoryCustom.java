@@ -1,6 +1,6 @@
-package umc.spring.reataurant.repository;
+package umc.spring.restaurant.repository;
 
-import umc.spring.reataurant.domain.Restaurant;
+import umc.spring.restaurant.domain.Restaurant;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package umc.spring.reataurant.domain;
+package umc.spring.restaurant.domain;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QRestaurant extends EntityPathBase<Restaurant> {
 
-    private static final long serialVersionUID = -112800058L;
+    private static final long serialVersionUID = 445556468L;
 
     public static final QRestaurant restaurant = new QRestaurant("restaurant");
 
@@ -24,7 +24,7 @@ public class QRestaurant extends EntityPathBase<Restaurant> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
 
-    public final EnumPath<umc.spring.reataurant.domain.enums.FoodCategory> foodCategory = createEnum("foodCategory", umc.spring.reataurant.domain.enums.FoodCategory.class);
+    public final EnumPath<umc.spring.restaurant.domain.enums.FoodCategory> foodCategory = createEnum("foodCategory", umc.spring.restaurant.domain.enums.FoodCategory.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 

@@ -1,11 +1,11 @@
-package umc.spring.reataurant.service;
+package umc.spring.restaurant.service;
 
-import umc.spring.reataurant.domain.Restaurant;
+import umc.spring.restaurant.domain.Restaurant;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface RestaurantQueryService {
+public interface RestaurantService {
     Optional<Restaurant> findRestaurant(Long id);
     List<Restaurant> findRestaurantsByNameAndScore(String name, Float totalScore);
 }

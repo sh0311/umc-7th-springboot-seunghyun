@@ -1,4 +1,4 @@
-package umc.spring.reataurant.domain.enums;
+package umc.spring.restaurant.domain.enums;
 
 public enum FoodCategory {
     KOREAN,

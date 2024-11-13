@@ -3,8 +3,7 @@ package umc.spring.mission.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.global.BaseEntity;
-import umc.spring.question.domain.Question;
-import umc.spring.reataurant.domain.Restaurant;
+import umc.spring.restaurant.domain.Restaurant;
 import umc.spring.region.domain.Region;
 
 @Entity

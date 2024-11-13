@@ -29,6 +29,11 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // 식당 에러
     RESTAURANT_NOT_FOUND(HttpStatus.NOT_FOUND, "Restaurant4001", "해당 id의 식당이 존재하지 않습니다"),
+
+    // 지역 에러
+    REGION_NOT_FOUND(HttpStatus.NOT_FOUND, "Region4001", "해당 id의 지역이 존재하지 않습니다."),
+
+
     // For test
     TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트");
 

@@ -33,7 +33,7 @@ public class QRegion extends EntityPathBase<Region> {
 
     public final StringPath name = createString("name");
 
-    public final NumberPath<Integer> score_sum = createNumber("score_sum", Integer.class);
+    public final NumberPath<Integer> scoreSum = createNumber("scoreSum", Integer.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;

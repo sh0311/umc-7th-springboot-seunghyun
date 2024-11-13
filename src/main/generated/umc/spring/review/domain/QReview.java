@@ -33,7 +33,7 @@ public class QReview extends EntityPathBase<Review> {
 
     public final ListPath<ReviewImage, QReviewImage> images = this.<ReviewImage, QReviewImage>createList("images", ReviewImage.class, QReviewImage.class, PathInits.DIRECT2);
 
-    public final umc.spring.reataurant.domain.QRestaurant restaurant;
+    public final umc.spring.restaurant.domain.QRestaurant restaurant;
 
     public final NumberPath<Integer> score = createNumber("score", Integer.class);
 
@@ -60,7 +60,7 @@ public class QReview extends EntityPathBase<Review> {
 
     public QReview(Class<? extends Review> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.restaurant = inits.isInitialized("restaurant") ? new umc.spring.reataurant.domain.QRestaurant(forProperty("restaurant")) : null;
+        this.restaurant = inits.isInitialized("restaurant") ? new umc.spring.restaurant.domain.QRestaurant(forProperty("restaurant")) : null;
         this.user = inits.isInitialized("user") ? new umc.spring.user.domain.QUser(forProperty("user")) : null;
     }
 

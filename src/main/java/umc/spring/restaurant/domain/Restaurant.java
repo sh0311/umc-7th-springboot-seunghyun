@@ -1,9 +1,9 @@
-package umc.spring.reataurant.domain;
+package umc.spring.restaurant.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.global.BaseEntity;
-import umc.spring.reataurant.domain.enums.FoodCategory;
+import umc.spring.restaurant.domain.enums.FoodCategory;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -23,7 +23,7 @@ public class Restaurant extends BaseEntity {
 
 
     @Enumerated(EnumType.STRING)
-    private FoodCategory foodCategory;
+    private FoodCategory foodCategory; // mysql에서 소문자로 입력해도 알아서 대문자로 바뀜
 
     @Override
     public String toString() {

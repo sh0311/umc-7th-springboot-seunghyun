@@ -1,11 +1,11 @@
-package umc.spring.reataurant.repository;
+package umc.spring.restaurant.repository;
 
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import umc.spring.reataurant.domain.QRestaurant;
-import umc.spring.reataurant.domain.Restaurant;
+import umc.spring.restaurant.domain.QRestaurant;
+import umc.spring.restaurant.domain.Restaurant;
 
 import java.util.List;
 
