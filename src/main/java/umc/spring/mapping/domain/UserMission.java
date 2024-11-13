@@ -25,6 +25,10 @@ public class UserMission extends BaseEntity {
     @Builder.Default
     private boolean requestSuccess=false;
 
+    //도전중인지
+    @Builder.Default
+    private boolean isChallenging=false;
+
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
@@ -32,4 +36,8 @@ public class UserMission extends BaseEntity {
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="mission_id")
     private Mission mission;
+
+    public void updateIsChallenging() {
+        isChallenging=true;
+    }
 }

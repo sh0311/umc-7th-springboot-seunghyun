@@ -11,6 +11,8 @@ public class ReviewRequestDto {
     private String content;
     @NotNull
     private Integer score;
+    @NotNull
+    private Long restaurantId;
 
 
     public Review toEntity(Restaurant restaurant, User user){

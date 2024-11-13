@@ -16,9 +16,9 @@ import umc.spring.review.service.ReviewService;
 public class ReviewController {
     private final ReviewService reviewService;
 
-    @PostMapping("/restaurant/{restaurantId}/review/{userId}") //로그인 구현 후 수정
-    public ApiResponse<ReviewResponseDto> createReview(@RequestBody @Valid ReviewRequestDto request, @PathVariable Long restaurantId, @PathVariable Long userId) {
-        ReviewResponseDto response=reviewService.createReview(request, restaurantId, userId);
+    @PostMapping("/review/{userId}") //로그인 구현 후 수정
+    public ApiResponse<ReviewResponseDto> createReview(@RequestBody @Valid ReviewRequestDto request, @PathVariable Long userId) {
+        ReviewResponseDto response=reviewService.createReview(request, userId);
         return ApiResponse.onSuccess(response);
     }
 }

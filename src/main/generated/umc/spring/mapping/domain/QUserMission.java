@@ -29,6 +29,8 @@ public class QUserMission extends EntityPathBase<UserMission> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
+    public final BooleanPath isChallenging = createBoolean("isChallenging");
+
     public final BooleanPath isComplete = createBoolean("isComplete");
 
     public final umc.spring.mission.domain.QMission mission;

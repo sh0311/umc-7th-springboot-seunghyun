@@ -34,4 +34,5 @@ public class CategoriesExistValidator implements ConstraintValidator<ExistCatego
         return isValid;
 
     }
+
 }

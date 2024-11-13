@@ -26,8 +26,8 @@ public class ReviewService {
     private final RestaurantRepository restaurantRepository;
 
     @Transactional
-    public ReviewResponseDto createReview(@Valid ReviewRequestDto request, Long restaurantId, Long userId) {
-        Restaurant restaurant=restaurantRepository.findById(restaurantId).orElseThrow(() -> new NotFoundHandler(ErrorStatus.RESTAURANT_NOT_FOUND));
+    public ReviewResponseDto createReview(@Valid ReviewRequestDto request, Long userId) {
+        Restaurant restaurant=restaurantRepository.findById(request.getRestaurantId()).orElseThrow(() -> new NotFoundHandler(ErrorStatus.RESTAURANT_NOT_FOUND));
         User user=userRepository.findById(userId).orElseThrow(() -> new NotFoundHandler(ErrorStatus.USER_NOT_FOUND));
 
         Review review=request.toEntity(restaurant, user);
