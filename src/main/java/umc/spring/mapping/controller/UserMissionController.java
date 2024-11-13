@@ -14,7 +14,7 @@ import umc.spring.validation.annotation.IsChallenging;
 
 @RestController
 @RequiredArgsConstructor
-@Validated
+@Validated //PathVariable에 어노테이션 붙이는 경우엔 Controller에 @Validated 넣어줘야함!!
 public class UserMissionController {
 
     private final UserMissionService userMissionService;
