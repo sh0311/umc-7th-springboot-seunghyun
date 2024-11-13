@@ -24,7 +24,7 @@ public class MissionService {
     private final RestaurantRepository restaurantRepository;
 
     @Transactional
-    public MissionResponseDto createMission(@Valid MissionRequestDto request) {
+    public Mission createMission(@Valid MissionRequestDto request) {
         Region region=regionRepository.findById(request.getRegionId()).orElseThrow(() -> new NotFoundHandler(ErrorStatus.REGION_NOT_FOUND));
         Restaurant restaurant=restaurantRepository.findById(request.getRestaurantId()).orElseThrow(() -> new NotFoundHandler(ErrorStatus.RESTAURANT_NOT_FOUND));
 
@@ -33,6 +33,6 @@ public class MissionService {
         mission.mapRegion(region);
 
         missionRepository.save(mission);
-        return MissionResponseDto.from(mission);
+        return mission;
     }
 }
