@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.global.BaseEntity;
 import umc.spring.user.domain.User;
-import umc.spring.reataurant.domain.Restaurant;
+import umc.spring.restaurant.domain.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -30,7 +30,7 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath email = createString("email");
 
-    public final EnumPath<umc.spring.user.domain.enums.Gender> gender = createEnum("gender", umc.spring.user.domain.enums.Gender.class);
+    public final EnumPath<umc.spring.user.enums.Gender> gender = createEnum("gender", umc.spring.user.enums.Gender.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
@@ -42,7 +42,7 @@ public class QUser extends EntityPathBase<User> {
 
     public final NumberPath<Integer> score = createNumber("score", Integer.class);
 
-    public final EnumPath<umc.spring.user.domain.enums.UserStatus> status = createEnum("status", umc.spring.user.domain.enums.UserStatus.class);
+    public final EnumPath<umc.spring.user.enums.UserStatus> status = createEnum("status", umc.spring.user.enums.UserStatus.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;

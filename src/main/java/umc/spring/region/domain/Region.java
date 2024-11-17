@@ -24,7 +24,7 @@ public class Region extends BaseEntity {
     @Builder.Default
     private Integer completeNum=0;
     //해당 지역 누적 포인트(by 완료)
-    private Integer score_sum;
+    private Integer scoreSum;
 
     @OneToMany(mappedBy = "region", cascade=CascadeType.ALL, orphanRemoval = true)
     private List<Mission> missions=new ArrayList<>();

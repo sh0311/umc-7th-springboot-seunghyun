@@ -6,9 +6,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.global.BaseEntity;
-import umc.spring.user.domain.enums.Gender;
-import umc.spring.user.domain.enums.UserStatus;
+import umc.spring.user.enums.Gender;
+import umc.spring.user.enums.UserStatus;
 
 import java.time.LocalDate;
 
@@ -17,6 +19,8 @@ import java.time.LocalDate;
 @Getter
 @Builder
 @AllArgsConstructor
+@DynamicUpdate
+@DynamicInsert
 public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +41,8 @@ public class User extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
     private UserStatus status;
 
-    private Integer score;
+    @Builder.Default
+    private Integer score=0;
     private LocalDate inActiveDate;
 
     @NotNull

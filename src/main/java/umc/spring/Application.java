@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import umc.spring.reataurant.service.RestaurantQueryService;
+import umc.spring.restaurant.service.RestaurantService;
 
 @SpringBootApplication
 @EnableJpaAuditing
@@ -19,7 +19,7 @@ public class Application {
 	@Bean
 	public CommandLineRunner run(ApplicationContext context) {
 		return args -> {
-			RestaurantQueryService restaurantQueryService = context.getBean(RestaurantQueryService.class);
+			RestaurantService restaurantService = context.getBean(RestaurantService.class);
 
 			// 파라미터 값 설정
 			String name = "요아정";
@@ -30,7 +30,7 @@ public class Application {
 			System.out.println("Name: " + name);
 			System.out.println("Score: " + score);
 
-			restaurantQueryService.findRestaurantsByNameAndScore(name, score)
+			restaurantService.findRestaurantsByNameAndScore(name, score)
 					.forEach(System.out::println);
 		};
 	}}

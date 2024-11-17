@@ -35,7 +35,7 @@ public class QMission extends EntityPathBase<Mission> {
 
     public final umc.spring.region.domain.QRegion region;
 
-    public final umc.spring.reataurant.domain.QRestaurant restaurant;
+    public final umc.spring.restaurant.domain.QRestaurant restaurant;
 
     public final NumberPath<Integer> score = createNumber("score", Integer.class);
 
@@ -61,7 +61,7 @@ public class QMission extends EntityPathBase<Mission> {
     public QMission(Class<? extends Mission> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.region = inits.isInitialized("region") ? new umc.spring.region.domain.QRegion(forProperty("region")) : null;
-        this.restaurant = inits.isInitialized("restaurant") ? new umc.spring.reataurant.domain.QRestaurant(forProperty("restaurant")) : null;
+        this.restaurant = inits.isInitialized("restaurant") ? new umc.spring.restaurant.domain.QRestaurant(forProperty("restaurant")) : null;
     }
 
 }
