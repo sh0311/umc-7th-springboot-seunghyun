@@ -10,7 +10,7 @@ import umc.spring.user.domain.User;
 public class ReviewRequestDto {
     private String content;
     @NotNull
-    private Integer score;
+    private Float score;
     @NotNull
     private Long restaurantId;
 
