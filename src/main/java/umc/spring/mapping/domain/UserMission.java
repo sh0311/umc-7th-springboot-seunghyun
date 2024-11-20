@@ -19,6 +19,7 @@ public class UserMission extends BaseEntity {
     private Long id;
 
     @Builder.Default
+    @Column(name = "is_complete")
     private boolean isComplete=false;
 
     //성공 요청 보냈는지

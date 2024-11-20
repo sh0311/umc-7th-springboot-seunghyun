@@ -37,6 +37,8 @@ public enum ErrorStatus implements BaseErrorCode {
     USER_MISSION_NOT_FOUND(HttpStatus.NOT_FOUND, "UserMission4001", "해당 id의 유저미션이 존재하지 않습니다."),
     IS_CHALLENGING_MISSION(HttpStatus.BAD_REQUEST, "UserMission4002", "해당 미션은 이미 도전중입니다."),
 
+    //페이지 에러
+    PAGE_BAD_REQUEST(HttpStatus.BAD_REQUEST, "Page4001", "페이지값이 너무 작습니다. 페이지가 1이상이어야 조회 가능합니다."),
 
     // For test
     TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트");

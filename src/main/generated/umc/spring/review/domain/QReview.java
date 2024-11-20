@@ -35,7 +35,7 @@ public class QReview extends EntityPathBase<Review> {
 
     public final umc.spring.restaurant.domain.QRestaurant restaurant;
 
-    public final NumberPath<Integer> score = createNumber("score", Integer.class);
+    public final NumberPath<Float> score = createNumber("score", Float.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;
