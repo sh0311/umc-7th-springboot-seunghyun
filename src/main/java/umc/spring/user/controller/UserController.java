@@ -11,6 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import umc.spring.apiPayload.ApiResponse;
@@ -23,7 +26,7 @@ import umc.spring.user.dto.UserReviewResponseListDTO;
 import umc.spring.user.service.UserService;
 import umc.spring.validation.annotation.CheckPage;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/users")
 @Validated
@@ -33,11 +36,26 @@ public class UserController {
     private final ReviewService reviewService;
     private final MissionService missionService;
 
-    @PostMapping
-    public ApiResponse<UserResponseDto> join(@RequestBody @Valid UserRequestDto request){
-        UserResponseDto userDto = userService.join(request);
-        return ApiResponse.onSuccess(userDto);
+    @PostMapping("/signup")
+    public String join(@ModelAttribute("memberJoinDto") UserRequestDto request, BindingResult bindingResult,
+                                             Model model) {
+        System.out.println("Password in request: " + request.getPassword());
+        if (bindingResult.hasErrors()) {
+            // 뷰에 데이터 바인딩이 실패할 경우 signup 페이지를 유지합니다.
+            return "signup";
+        }
+
+        try{
+            userService.join(request);
+            return "redirect:/login";
+        } catch (Exception e){
+            // 회원가입 과정에서 에러가 발생할 경우 에러 메시지를 보내고, signup 페이디를 유지합니다.
+            model.addAttribute("error", e.getMessage());
+            return "signup";
+        }
+
     }
+
 
     @Operation(summary="내가 쓴 리 조회 API", description = "내가 쓴 리뷰를 조회하는 API이며, 페이징을 포함합니다. query String 으로 page 번호를 주세요")
     @ApiResponses({

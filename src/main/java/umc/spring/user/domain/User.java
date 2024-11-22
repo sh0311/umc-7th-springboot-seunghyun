@@ -10,6 +10,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.global.BaseEntity;
 import umc.spring.user.enums.Gender;
+import umc.spring.user.enums.Role;
 import umc.spring.user.enums.UserStatus;
 
 import java.time.LocalDate;
@@ -34,7 +35,6 @@ public class User extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(10)")
     private Gender gender;
 
-    private LocalDate birth;
     private String address;
 
     @Enumerated(EnumType.STRING)
@@ -47,5 +47,16 @@ public class User extends BaseEntity {
 
     @NotNull
     private String email;
-    private String phone;
+
+    @NotNull
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+
+
+    public void encodePassword(String password) {
+        this.password = password;
+    }
 }

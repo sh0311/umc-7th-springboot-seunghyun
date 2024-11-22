@@ -23,8 +23,6 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath address = createString("address");
 
-    public final DatePath<java.time.LocalDate> birth = createDate("birth", java.time.LocalDate.class);
-
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
 
@@ -38,7 +36,9 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath name = createString("name");
 
-    public final StringPath phone = createString("phone");
+    public final StringPath password = createString("password");
+
+    public final EnumPath<umc.spring.user.enums.Role> role = createEnum("role", umc.spring.user.enums.Role.class);
 
     public final NumberPath<Integer> score = createNumber("score", Integer.class);
 

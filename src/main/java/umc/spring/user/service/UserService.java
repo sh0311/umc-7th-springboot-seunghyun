@@ -1,6 +1,7 @@
 package umc.spring.user.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.spring.apiPayload.code.status.ErrorStatus;
@@ -24,10 +25,15 @@ public class UserService {
     private final CategoryRepository categoryRepository;
     private final UserPreferService userPreferService;
 
+    private final PasswordEncoder passwordEncoder;
+
     @Transactional
     public UserResponseDto join(UserRequestDto request) {
 
         User user=request.toEntity();
+        System.out.println(user.getPassword());
+        //비밀번호 암호화
+        user.encodePassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user); //user를 저장해야 UserPrefer에 user객체와 연관관계 매핑 가능
 
         //foodCategoryList 생성
