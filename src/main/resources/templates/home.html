@@ -6,10 +6,11 @@
 <body>
 <h2>Welcome to Home Page!</h2>
 <p th:if="${#authentication != null}">안녕하세요, <span th:text="${#authentication.name}">사용자 이름</span>님!</p>
-<p th:if="${#authentication == null}">안녕하세요, 방문자님!</p>
 <!-- 관리자 권한이 있을 때만 관리자 페이지 버튼 표시 -->
-<div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
-    <a th:href="@{/admin}">관리자 페이지로 이동</a>
+<div th:if="${#authorization != null}">
+    <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+        <a th:href="@{/admin}">관리자 페이지로 이동</a>
+    </div>
 </div>
 <!-- 로그아웃 버튼 추가 -->
 <form th:action="@{/logout}" method="post">
