@@ -30,6 +30,7 @@ public class Question extends BaseEntity {
     private User user;
 
     @OneToMany(mappedBy="question", cascade=CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<QuestionImage> images=new ArrayList<QuestionImage>();
 
 

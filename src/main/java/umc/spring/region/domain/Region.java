@@ -27,5 +27,6 @@ public class Region extends BaseEntity {
     private Integer scoreSum;
 
     @OneToMany(mappedBy = "region", cascade=CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Mission> missions=new ArrayList<>();
 }
