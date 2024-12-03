@@ -33,6 +33,7 @@ public class Review extends BaseEntity {
     private User user;
 
     @OneToMany(mappedBy="review", cascade=CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<ReviewImage> images=new ArrayList<>();
 
 
