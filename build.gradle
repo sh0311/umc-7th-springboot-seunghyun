@@ -57,20 +57,16 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+def querydslDir = "src/main/generated"
 
-def generated = 'src/main/generated'
-
-// querydsl QClass 파일 생성 위치를 지정
-tasks.withType(JavaCompile) {
-	options.getGeneratedSourceOutputDirectory().set(file(generated))
-}
-
-// java source set 에 querydsl QClass 위치 추가
 sourceSets {
-	main.java.srcDirs += [ generated ]
+	main.java.srcDirs += [ querydslDir ]
 }
 
-// gradle clean 시에 QClass 디렉토리 삭제
-clean {
-	delete file(generated)
+tasks.withType(JavaCompile) {
+	options.annotationProcessorGeneratedSourcesDirectory = file(querydslDir)
+}
+
+clean.doLast {
+	file(querydslDir).deleteDir()
 }
