@@ -1,5 +1,6 @@
 package umc.spring.restaurant.service;
 
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -7,8 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import umc.spring.apiPayload.code.status.ErrorStatus;
 import umc.spring.apiPayload.exception.handler.BadRequestHandler;
+import umc.spring.config.AmazonS3Manager;
 import umc.spring.restaurant.domain.Restaurant;
 import umc.spring.restaurant.repository.RestaurantRepository;
 import umc.spring.review.domain.Review;
@@ -25,6 +28,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     private final RestaurantRepository restaurantRepository;
     private final ReviewRepository reviewRepository;
+    private final AmazonS3Manager s3Manager;
+    private final UuidRepository uuidRepository;
+    private final ReviewImageRepository reviewImageRepository;
 
     @Override
     public Optional<Restaurant> findRestaurant(Long id){
@@ -61,5 +67,23 @@ public class RestaurantServiceImpl implements RestaurantService {
         ReviewPreViewListDTO dtos=ReviewPreViewListDTO.from(reviews);
 
         return dtos;
+    }
+
+    public Review createReview(Long memberId, Long storeId, StoreRequestDTO.ReveiwDTO request, MultipartFile reviewPicture) {
+
+        Review review = StoreConverter.toReview(request);
+
+        String uuid = UUID.randomUUID().toString();
+        Uuid savedUuid = uuidRepository.save(Uuid.builder()
+                .uuid(uuid).build());
+
+        String pictureUrl = s3Manager.uploadFile(s3Manager.generateReviewKeyName(savedUuid), reviewPicture);
+
+        review.setUser(userRepository.findById(memberId).get());
+        review.setRestaurant(restaurantRepository.findById(storeId).get());
+
+
+        reviewImageRepository.save(ReviewConverter.toReviewImage(pictureUrl, review));
+        return reviewRepository.save(review);
     }
 }

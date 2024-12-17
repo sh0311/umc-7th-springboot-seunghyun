@@ -6,17 +6,21 @@ import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import umc.spring.apiPayload.ApiResponse;
 import umc.spring.restaurant.dto.RestaurantMissionListResponseDTO;
 import umc.spring.restaurant.dto.RestaurantMissionResponseDTO;
 import umc.spring.restaurant.service.RestaurantServiceImpl;
+import umc.spring.review.domain.Review;
 import umc.spring.review.dto.ReviewPreViewListDTO;
 import umc.spring.review.service.ReviewService;
 import umc.spring.validation.annotation.CheckPage;
@@ -64,4 +68,23 @@ public class RestaurantController {
         RestaurantMissionListResponseDTO dto = reviewService.findByRestaurant_Id(restaurantId, pageable);
         return ApiResponse.onSuccess(dto);
     }
+
+    @PostMapping(
+            value = "/{storeId}/reviews",
+            consumes = { MediaType.MULTIPART_FORM_DATA_VALUE }
+    )
+    public ApiResponse<StoreResponseDTO.CreateReviewResultDTO> createReview(
+            @Parameter(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
+            @RequestPart("request") @Valid StoreRequestDTO.ReviewDTO request,
+
+            @ExistStore @PathVariable(name = "restaurantId") Long restaurantId,
+            @ExistUser @RequestParam(name = "userId") Long userId,
+            @RequestPart("reviewPicture") MultipartFile reviewPicture
+    ) {
+        Review review = storeCommandService.createReview(userId, restaurantId, request, reviewPicture);
+        return ApiResponse.onSuccess(StoreConverter.toCreateReviewResultDTO(review));
+    }
+
 }
+
+
